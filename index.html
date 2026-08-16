@@ -1,395 +1,787 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
 
-<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta
+      name="description"
+      content="Notes — une application moderne pour organiser vos notes et vos tâches."
+    />
 
-    <title>Notes - Connexion</title>
+    <meta name="theme-color" content="#f8fafc" />
 
-    <link rel="stylesheet" href="index.css">
-    <link rel="icon" href="logo.png">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <title>Notes — Organisez vos idées</title>
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="logo.png" />
 
+    <!-- =========================
+       POLICES
+  ========================== -->
 
-    <!-- Toastify -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
 
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-    <!-- EmailJS -->
-    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
 
+    <!-- =========================
+       FONT AWESOME
+  ========================== -->
 
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    />
 
+    <!-- =========================
+       QUILL
+  ========================== -->
 
-</head>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css"
+    />
 
+    <!-- =========================
+       HIGHLIGHT
+  ========================== -->
 
-<body>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css"
+    />
 
+    <!-- =========================
+       KATEX
+  ========================== -->
 
-<div class="background">
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
+    />
 
-    <div class="blur one"></div>
-    <div class="blur two"></div>
+    <!-- =========================
+       TOASTIFY
+  ========================== -->
 
-</div>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
+    />
 
+    <!-- =========================
+       CSS
+  ========================== -->
 
+    <link rel="stylesheet" href="style.css" />
+  </head>
 
-<div class="container">
+  <body>
+    <!-- =====================================================
+       APP
+  ====================================================== -->
 
+    <div class="app">
+      <!-- ===================================================
+         SIDEBAR
+    ==================================================== -->
 
-    <h1>Notes</h1>
+      <aside class="sidebar" id="sidebar">
+        <div class="brand">
+          <div class="brand-logo">
+            <i class="fa-solid fa-note-sticky"></i>
+          </div>
 
-    <p>
-        Capturez vos idées. Organisez votre avenir.
-    </p>
+          <div>
+            <strong>Notes</strong>
+            <span>Votre espace</span>
+          </div>
 
-
-
-    <form id="form1">
-
-
-        <div class="input-box">
-
-            <input 
-            type="text"
-            placeholder="Nom complet"
-            required
-            id="name">
-
+          <button
+            class="sidebar-close"
+            id="sidebarClose"
+            aria-label="Fermer le menu"
+          >
+            <i class="fa-solid fa-xmark"></i>
+          </button>
         </div>
 
-
-
-        <div class="input-box">
-
-            <input 
-            type="email"
-            placeholder="Adresse e-mail"
-            required
-            id="email">
-
-        </div>
-       
-        <div class="checkbox">
-
-            <input 
-            type="checkbox"
-            required>
-            <p>J'ai lu et j'accepte les <a href="politique.html">politiques de confidentialité </a>et les <a href="politique.html">conditions d'utilisation</a> </p>
-
-        </div>
-
-
-
-        <button type="submit" class="btn">
-
-            Continuer
-
+        <button class="new-note-button" id="newNoteButton">
+          <i class="fa-solid fa-plus"></i>
+          <span>Nouvelle note</span>
+          <kbd>Ctrl N</kbd>
         </button>
 
+        <nav class="sidebar-nav">
+          <p class="nav-title">ESPACE</p>
 
-    </form>
+          <button class="nav-item active" data-view="notes">
+            <i class="fa-regular fa-note-sticky"></i>
+            <span>Mes notes</span>
+            <b id="notesCount">0</b>
+          </button>
 
+          <button class="nav-item" data-view="favorites">
+            <i class="fa-regular fa-star"></i>
+            <span>Favoris</span>
+            <b id="favoritesCount">0</b>
+          </button>
 
-</div>
+          <button class="nav-item" data-view="tasks">
+            <i class="fa-solid fa-list-check"></i>
+            <span>Tâches</span>
+            <b id="tasksCount">0</b>
+          </button>
 
+          <p class="nav-title">CATÉGORIES</p>
 
+          <button class="category-item" data-category="Cours">
+            <span class="category-dot blue"></span>
+            Cours
+          </button>
 
+          <button class="category-item" data-category="Idées">
+            <span class="category-dot purple"></span>
+            Idées
+          </button>
 
-<div class="container2">
+          <button class="category-item" data-category="Personnel">
+            <span class="category-dot green"></span>
+            Personnel
+          </button>
 
+          <button class="category-item" data-category="Travail">
+            <span class="category-dot orange"></span>
+            Travail
+          </button>
 
-<form id="form2">
+          <p class="nav-title">AUTRE</p>
 
+          <button class="nav-item" data-view="trash">
+            <i class="fa-regular fa-trash-can"></i>
+            <span>Corbeille</span>
+            <b id="trashCount">0</b>
+          </button>
+        </nav>
 
-    <div class="input-box">
+        <div class="sidebar-bottom">
+          <button class="sidebar-action" id="themeButton">
+            <i class="fa-solid fa-moon"></i>
 
-        <input 
-        type="number"
-        placeholder="Code"
-        required
-        id="code">
+            <span>Apparence</span>
 
+            <small id="themeLabel"> Sombre </small>
+          </button>
+
+          <button class="sidebar-action" id="profileButton">
+            <div class="mini-avatar">
+              <i class="fa-solid fa-user"></i>
+            </div>
+
+            <span id="sidebarUser"> Mon profil </span>
+
+            <i class="fa-solid fa-chevron-right"></i>
+          </button>
+        </div>
+      </aside>
+
+      <!-- ===================================================
+         OVERLAY MOBILE
+    ==================================================== -->
+
+      <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+      <!-- ===================================================
+         CONTENU
+    ==================================================== -->
+
+      <main class="main">
+        <!-- HEADER -->
+
+        <header class="topbar">
+          <button class="mobile-menu" id="mobileMenu" aria-label="Menu">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+
+          <div class="mobile-brand">
+            <i class="fa-solid fa-note-sticky"></i>
+            <strong>Notes</strong>
+          </div>
+
+          <div class="topbar-search">
+            <i class="fa-solid fa-magnifying-glass"></i>
+
+            <input
+              type="search"
+              id="searchInput"
+              placeholder="Rechercher..."
+              autocomplete="off"
+            />
+
+            <kbd>Ctrl K</kbd>
+          </div>
+
+          <div class="topbar-actions">
+            <button
+              class="icon-button"
+              id="quickTheme"
+              aria-label="Changer le thème"
+            >
+              <i class="fa-solid fa-moon"></i>
+            </button>
+
+            <button
+              class="icon-button"
+              id="profileTopButton"
+              aria-label="Profil"
+            >
+              <i class="fa-regular fa-user"></i>
+            </button>
+          </div>
+        </header>
+
+        <!-- =================================================
+           CONTENT
+      ================================================== -->
+
+        <section class="content">
+          <!-- HERO -->
+
+          <div class="hero">
+            <div>
+              <span class="eyebrow">
+                <i class="fa-solid fa-sparkles"></i>
+                Votre espace personnel
+              </span>
+
+              <h1 id="pageTitle">Bonjour 👋</h1>
+
+              <p id="pageSubtitle">
+                Organisez vos idées, vos notes et vos tâches.
+              </p>
+            </div>
+
+            <div class="save-status">
+              <span class="status-dot" id="statusDot"></span>
+
+              <span id="saveStatus"> Enregistré </span>
+            </div>
+          </div>
+
+          <!-- =================================================
+             DASHBOARD
+        ================================================== -->
+
+          <section class="dashboard" id="dashboard">
+            <div class="stat-card">
+              <div class="stat-icon blue-bg">
+                <i class="fa-regular fa-note-sticky"></i>
+              </div>
+
+              <div>
+                <span>Notes</span>
+                <strong id="statNotes">0</strong>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-icon yellow-bg">
+                <i class="fa-solid fa-star"></i>
+              </div>
+
+              <div>
+                <span>Favoris</span>
+                <strong id="statFavorites">0</strong>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-icon green-bg">
+                <i class="fa-solid fa-check"></i>
+              </div>
+
+              <div>
+                <span>Tâches terminées</span>
+                <strong id="statCompleted">0</strong>
+              </div>
+            </div>
+
+            <div class="stat-card progress-card">
+              <div class="progress-circle">
+                <span id="progressValue">0%</span>
+              </div>
+
+              <div>
+                <span>Progression</span>
+                <strong id="statTasks">0 tâches</strong>
+              </div>
+            </div>
+          </section>
+
+          <!-- =================================================
+             NOTES VIEW
+        ================================================== -->
+
+          <section class="view" id="notesView">
+            <div class="section-heading">
+              <div>
+                <h2 id="notesHeading">Mes notes</h2>
+
+                <p id="notesDescription">
+                  Vos dernières idées et informations.
+                </p>
+              </div>
+
+              <div class="view-actions">
+                <select id="sortNotes" aria-label="Trier les notes">
+                  <option value="updated">Dernière modification</option>
+
+                  <option value="created">Plus récentes</option>
+
+                  <option value="oldest">Plus anciennes</option>
+
+                  <option value="az">A → Z</option>
+                </select>
+
+                <button class="primary-button" id="desktopNewNote">
+                  <i class="fa-solid fa-plus"></i>
+                  Nouvelle note
+                </button>
+              </div>
+            </div>
+
+            <!-- EMPTY -->
+
+            <div class="empty-state" id="notesEmpty">
+              <div class="empty-icon">
+                <i class="fa-regular fa-note-sticky"></i>
+              </div>
+
+              <h3>Aucune note</h3>
+
+              <p>Commencez par créer votre première note.</p>
+
+              <button class="primary-button" id="emptyNewNote">
+                <i class="fa-solid fa-plus"></i>
+                Créer une note
+              </button>
+            </div>
+
+            <!-- NOTES GRID -->
+
+            <div class="notes-grid" id="notesGrid"></div>
+          </section>
+
+          <!-- =================================================
+             TASKS VIEW
+        ================================================== -->
+
+          <section class="view hidden" id="tasksView">
+            <div class="section-heading">
+              <div>
+                <h2>Mes tâches</h2>
+
+                <p>Gardez le contrôle sur ce que vous devez faire.</p>
+              </div>
+            </div>
+
+            <div class="task-composer">
+              <input
+                type="text"
+                id="taskInput"
+                placeholder="Que devez-vous faire ?"
+                autocomplete="off"
+              />
+
+              <select id="taskPriority">
+                <option value="normal">Priorité normale</option>
+
+                <option value="high">Haute priorité</option>
+
+                <option value="low">Faible priorité</option>
+              </select>
+
+              <button class="primary-button" id="addTaskButton">
+                <i class="fa-solid fa-plus"></i>
+                Ajouter
+              </button>
+            </div>
+
+            <div class="task-toolbar">
+              <div class="task-filters">
+                <button class="task-filter active" data-task-filter="all">
+                  Toutes
+                </button>
+
+                <button class="task-filter" data-task-filter="todo">
+                  À faire
+                </button>
+
+                <button class="task-filter" data-task-filter="done">
+                  Terminées
+                </button>
+              </div>
+            </div>
+
+            <div class="tasks-list" id="tasksList"></div>
+          </section>
+
+          <!-- =================================================
+             FAVORITES
+        ================================================== -->
+
+          <section class="view hidden" id="favoritesView">
+            <div class="section-heading">
+              <div>
+                <h2>Favoris ⭐</h2>
+
+                <p>Les notes que vous souhaitez garder à portée de main.</p>
+              </div>
+            </div>
+
+            <div class="notes-grid" id="favoritesGrid"></div>
+
+            <div class="empty-state" id="favoritesEmpty">
+              <div class="empty-icon">
+                <i class="fa-regular fa-star"></i>
+              </div>
+
+              <h3>Aucun favori</h3>
+
+              <p>Ajoutez une note aux favoris avec l'étoile.</p>
+            </div>
+          </section>
+
+          <!-- =================================================
+             CATEGORY
+        ================================================== -->
+
+          <section class="view hidden" id="categoryView">
+            <div class="section-heading">
+              <div>
+                <span class="category-badge" id="categoryBadge">
+                  Catégorie
+                </span>
+
+                <h2 id="categoryTitle">Cours</h2>
+
+                <p>Notes de cette catégorie.</p>
+              </div>
+            </div>
+
+            <div class="notes-grid" id="categoryGrid"></div>
+          </section>
+
+          <!-- =================================================
+             TRASH
+        ================================================== -->
+
+          <section class="view hidden" id="trashView">
+            <div class="section-heading">
+              <div>
+                <h2>Corbeille</h2>
+
+                <p>Les éléments supprimés sont conservés ici.</p>
+              </div>
+
+              <button class="danger-outline" id="emptyTrash">
+                <i class="fa-solid fa-trash"></i>
+                Vider la corbeille
+              </button>
+            </div>
+
+            <div class="trash-list" id="trashList"></div>
+
+            <div class="empty-state" id="trashEmpty">
+              <div class="empty-icon">
+                <i class="fa-regular fa-trash-can"></i>
+              </div>
+
+              <h3>La corbeille est vide</h3>
+
+              <p>Rien à récupérer pour le moment.</p>
+            </div>
+          </section>
+        </section>
+      </main>
     </div>
 
+    <!-- =====================================================
+       MOBILE BOTTOM NAV
+  ====================================================== -->
+
+    <nav class="bottom-nav">
+      <button class="bottom-item active" data-view="notes">
+        <i class="fa-regular fa-note-sticky"></i>
+        <span>Notes</span>
+      </button>
+
+      <button class="bottom-item" data-view="tasks">
+        <i class="fa-solid fa-list-check"></i>
+        <span>Tâches</span>
+      </button>
+
+      <button class="bottom-add" id="mobileNewNote" aria-label="Nouvelle note">
+        <i class="fa-solid fa-plus"></i>
+      </button>
+
+      <button class="bottom-item" data-view="favorites">
+        <i class="fa-regular fa-star"></i>
+        <span>Favoris</span>
+      </button>
+
+      <button class="bottom-item" id="mobileMenuButton">
+        <i class="fa-solid fa-bars"></i>
+        <span>Menu</span>
+      </button>
+    </nav>
+
+    <!-- =====================================================
+       NOTE EDITOR MODAL
+  ====================================================== -->
+
+    <div class="modal" id="noteModal" aria-hidden="true">
+      <div class="note-editor-modal">
+        <div class="editor-header">
+          <button class="icon-button" id="closeNote" aria-label="Fermer">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+
+          <div class="editor-title">
+            <span id="editorMode"> Nouvelle note </span>
+
+            <small id="editorSaveState"> Non enregistrée </small>
+          </div>
+
+          <button class="primary-button small" id="saveNote">
+            <i class="fa-solid fa-check"></i>
+            Enregistrer
+          </button>
+        </div>
+
+        <div class="editor-options">
+          <input
+            type="text"
+            id="noteTitle"
+            placeholder="Titre de la note"
+            maxlength="120"
+          />
+
+          <div class="editor-meta">
+            <select id="noteCategory">
+              <option value="Cours">📚 Cours</option>
+
+              <option value="Idées">💡 Idées</option>
+
+              <option value="Personnel">🌱 Personnel</option>
+
+              <option value="Travail">💼 Travail</option>
+            </select>
+
+            <button
+              class="favorite-editor"
+              id="noteFavorite"
+              aria-label="Ajouter aux favoris"
+            >
+              <i class="fa-regular fa-star"></i>
+            </button>
+          </div>
+        </div>
+
+        <div id="toolbar-container" class="quill-toolbar">
+          <span class="ql-formats">
+            <select class="ql-header">
+              <option selected></option>
+              <option value="1"></option>
+              <option value="2"></option>
+              <option value="3"></option>
+            </select>
+          </span>
+
+          <span class="ql-formats">
+            <button class="ql-bold"></button>
+            <button class="ql-italic"></button>
+            <button class="ql-underline"></button>
+            <button class="ql-strike"></button>
+          </span>
+
+          <span class="ql-formats">
+            <select class="ql-color"></select>
+            <select class="ql-background"></select>
+          </span>
 
+          <span class="ql-formats">
+            <button class="ql-list" value="ordered"></button>
 
-    <button type="submit" class="btn">
+            <button class="ql-list" value="bullet"></button>
 
-        Vérifier
+            <button class="ql-blockquote"></button>
 
-    </button>
+            <button class="ql-code-block"></button>
+          </span>
 
+          <span class="ql-formats">
+            <select class="ql-align"></select>
 
-</form>
+            <button class="ql-link"></button>
 
+            <button class="ql-image"></button>
 
-</div>
+            <button class="ql-clean"></button>
+          </span>
+        </div>
 
-<!-- Toastify -->
+        <div id="editor" class="editor"></div>
+      </div>
+    </div>
 
-<script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <!-- =====================================================
+       PROFILE MODAL
+  ====================================================== -->
 
+    <div class="modal" id="profileModal" aria-hidden="true">
+      <div class="profile-modal">
+        <button class="modal-close" id="closeProfile">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
 
+        <div class="profile-avatar">
+          <i class="fa-solid fa-user"></i>
+        </div>
 
-<script>
+        <h2>Mon profil</h2>
 
+        <p class="modal-description">Personnalisez votre espace Notes.</p>
 
-emailjs.init({
+        <label>
+          Nom
 
-    publicKey: "dtci9hmlnAfu3Uqy7"
+          <input type="text" id="profileName" placeholder="Votre nom" />
+        </label>
 
-});
+        <label>
+          Adresse e-mail
 
+          <input
+            type="email"
+            id="profileEmail"
+            placeholder="vous@example.com"
+          />
+        </label>
 
+        <label>
+          Sexe
 
-const form1 = document.getElementById("form1");
+          <select id="profileGender">
+            <option value="Homme">Homme</option>
 
-const form2 = document.getElementById("form2");
+            <option value="Femme">Femme</option>
 
+            <option value="Autre">Autre</option>
+          </select>
+        </label>
 
-const nameInput = document.getElementById("name");
+        <button class="primary-button full" id="saveProfile">
+          Enregistrer le profil
+        </button>
+      </div>
+    </div>
 
-const emailInput = document.getElementById("email");
+    <!-- =====================================================
+       THEME MODAL
+  ====================================================== -->
 
+    <div class="modal" id="themeModal" aria-hidden="true">
+      <div class="theme-modal">
+        <button class="modal-close" id="closeTheme">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
 
-const container = document.querySelector(".container");
+        <div class="theme-modal-icon">
+          <i class="fa-solid fa-palette"></i>
+        </div>
 
-const container2 = document.querySelector(".container2");
+        <h2>Apparence</h2>
 
+        <p>Choisissez l'apparence de votre espace.</p>
 
+        <div class="theme-options">
+          <button class="theme-option" data-theme="light">
+            <div>
+              <i class="fa-solid fa-sun"></i>
+            </div>
 
-let otp = Math.floor(100000 + Math.random() * 900000);
+            <span>Clair</span>
 
+            <i class="fa-solid fa-check"></i>
+          </button>
 
+          <button class="theme-option" data-theme="dark">
+            <div>
+              <i class="fa-solid fa-moon"></i>
+            </div>
 
+            <span>Sombre</span>
 
+            <i class="fa-solid fa-check"></i>
+          </button>
 
-form1.addEventListener("submit",(e)=>{
+          <button class="theme-option" data-theme="system">
+            <div>
+              <i class="fa-solid fa-desktop"></i>
+            </div>
 
+            <span>Système</span>
 
-    e.preventDefault();
+            <i class="fa-solid fa-check"></i>
+          </button>
+        </div>
+      </div>
+    </div>
 
+    <!-- =====================================================
+       CONFIRM MODAL
+  ====================================================== -->
 
+    <div class="modal" id="confirmModal" aria-hidden="true">
+      <div class="confirm-modal">
+        <div class="confirm-icon">
+          <i class="fa-solid fa-triangle-exclamation"></i>
+        </div>
 
-    emailjs.send(
+        <h2 id="confirmTitle">Confirmer</h2>
 
-        "service_d38jidh",
+        <p id="confirmText">Êtes-vous sûr ?</p>
 
-        "template_fzsk5gy",
+        <div class="confirm-actions">
+          <button class="secondary-button" id="cancelConfirm">Annuler</button>
 
-        {
+          <button class="danger-button" id="confirmAction">Confirmer</button>
+        </div>
+      </div>
+    </div>
 
-            otp: otp,
+    <!-- =====================================================
+       LIBRARIES
+  ====================================================== -->
 
-            name: nameInput.value,
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
 
-            email: emailInput.value
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
 
-        }
+    <script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
 
-    )
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 
-    .then(()=>{
+    <!-- =====================================================
+       SCRIPT
+  ====================================================== -->
 
-
-        Toastify({
-
-            text:"Vérifiez votre boîte e-mail",
-
-            duration:3500,
-
-            close:true,
-
-            style:{
-
-                background:
-                "linear-gradient(135deg,#2b1055,#7597de)"
-
-            }
-
-        }).showToast();
-
-
-
-        container.style.display="none";
-
-        container2.style.display="flex";
-
-
-
-    })
-
-    .catch(()=>{
-
-
-        Toastify({
-
-            text:"Erreur d'envoi du code",
-
-            duration:3500,
-
-            close:true
-
-        }).showToast();
-
-
-    });
-
-
-
-});
-
-
-
-
-
-
-
-form2.addEventListener("submit",(e)=>{
-
-
-    e.preventDefault();
-
-
-
-    const code = Number(
-        document.getElementById("code").value
-    );
-
-
-
-    if(code === otp){
-
-
-
-        localStorage.setItem(
-            "name",
-            nameInput.value
-        );
-
-
-        localStorage.setItem(
-            "email",
-            emailInput.value
-        );
-
-
-
-        Toastify({
-
-            text:"Vérifié",
-
-            duration:3500,
-
-            close:true,
-
-            style:{
-
-                background:
-                "linear-gradient(135deg,#2b1055,#7597de)"
-
-            }
-
-
-        }).showToast();
-
-
-
-
-        setTimeout(()=>{
-
-
-            window.location.href="captcha.html";
-
-
-        },500);
-
-
-
-    }
-
-
-    else{
-
-
-        Toastify({
-
-            text:"Votre code est invalide",
-
-            duration:3500,
-
-            close:true,
-
-            style:{
-
-                background:
-                "linear-gradient(135deg,#2b1055,#7597de)"
-
-            }
-
-
-        }).showToast();
-
-
-
-    }
-
-
-
-});
-
-
-
-
-
-
-
-window.onload = ()=>{
-
-
-    const token1 = localStorage.getItem("name");
-
-    const token2 = localStorage.getItem("email");
-
-
-
-    container2.style.display="none";
-
-
-
-    if(token1 && token2){
-
-
-
-        container.style.display="none";
-
-            window.location.href="accueil.html";
-    }
-
-
-    else{
-
-
-        container.style.display="flex";
-
-
-    }
-
-
-
-};
-
-</script>
-
-</body>
-
+    <script src="script.js"></script>
+  </body>
 </html>
