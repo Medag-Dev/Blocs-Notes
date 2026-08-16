@@ -1,298 +1,250 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>À propos - Mon Bloc-notes</title>
-    <link rel="icon" href="logo.png">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="icon" href="logo.png" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
 
     <style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Poppins", Arial, sans-serif;
-}
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", Arial, sans-serif;
+      }
 
-body {
-    background: linear-gradient(135deg, #0f172a, #020617);
-    color: #e5e7eb;
-    min-height: 100vh;
-    padding: 15px;
-}
+      body {
+        background: linear-gradient(135deg, #0f172a, #020617);
+        color: #e5e7eb;
+        min-height: 100vh;
+        padding: 15px;
+      }
 
-.about-container {
-    width: 100%;
-    max-width: 850px;
-    margin: 30px auto;
-}
+      .about-container {
+        width: 100%;
+        max-width: 850px;
+        margin: 30px auto;
+      }
 
-.card {
-    background: rgba(15, 23, 42, 0.95);
-    border-radius: 20px;
-    padding: 30px;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.4);
-    margin-bottom: 25px;
-    border: 1px solid rgba(255,255,255,0.08);
-    backdrop-filter: blur(10px);
-}
+      .card {
+        background: rgba(15, 23, 42, 0.95);
+        border-radius: 20px;
+        padding: 30px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+        margin-bottom: 25px;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        backdrop-filter: blur(10px);
+      }
 
-h1 {
-    text-align: center;
-    margin-bottom: 15px;
-    font-size: clamp(24px, 5vw, 32px);
-    color: white;
-}
+      h1 {
+        text-align: center;
+        margin-bottom: 15px;
+        font-size: clamp(24px, 5vw, 32px);
+        color: white;
+      }
 
-h2 {
-    margin-bottom: 15px;
-    font-size: clamp(18px, 4vw, 22px);
-    color: white;
-}
+      h2 {
+        margin-bottom: 15px;
+        font-size: clamp(18px, 4vw, 22px);
+        color: white;
+      }
 
-p {
-    line-height: 1.7;
-    margin-bottom: 15px;
-    color: #cbd5e1;
-    font-size: 15px;
-}
+      p {
+        line-height: 1.7;
+        margin-bottom: 15px;
+        color: #cbd5e1;
+        font-size: 15px;
+      }
 
-ul {
-    padding-left: 20px;
-}
+      ul {
+        padding-left: 20px;
+      }
 
-li {
-    margin-bottom: 10px;
-    color: #cbd5e1;
-    font-size: 15px;
-}
+      li {
+        margin-bottom: 10px;
+        color: #cbd5e1;
+        font-size: 15px;
+      }
 
+      /* Réseaux sociaux */
+      .social-links {
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
 
-/* Réseaux sociaux */
-.social-links {
-    display: flex;
-    justify-content: center;
-    gap: 12px;
-    flex-wrap: wrap;
-}
+      .social-links a {
+        text-decoration: none;
+        color: white;
+        padding: 12px 18px;
+        border-radius: 14px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        transition: 0.3s;
+        font-weight: 500;
+      }
 
-.social-links a {
-    text-decoration: none;
-    color: white;
-    padding: 12px 18px;
-    border-radius: 14px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    transition: .3s;
-    font-weight: 500;
-}
+      .whatsapp {
+        background: linear-gradient(135deg, #25d366, #128c7e);
+      }
 
-.whatsapp {
-    background: linear-gradient(135deg,#25D366,#128C7E);
-}
+      .Instagram {
+        background: linear-gradient(
+          45deg,
+          #feda75,
+          #fa7e1e,
+          #d62976,
+          #962fbf,
+          #4f5bd5
+        );
+      }
 
-.Instagram {
-  background: linear-gradient(
-    45deg,
-    #feda75,
-    #fa7e1e,
-    #d62976,
-    #962fbf,
-    #4f5bd5
-  );
-    
-}
+      .snapchat {
+        background: linear-gradient(135deg, #fff200, #ffcc00);
+        color: #111 !important;
+      }
 
-.snapchat {
-    background: linear-gradient(135deg,#FFF200,#FFCC00);
-    color:#111 !important;
-}
+      .social-links a:hover {
+        transform: translateY(-5px);
+        filter: brightness(1.15);
+      }
 
-.social-links a:hover {
-    transform: translateY(-5px);
-    filter: brightness(1.15);
-}
+      /* Version */
+      .version {
+        text-align: center;
+        color: #94a3b8;
+        font-size: 14px;
+      }
 
+      /* Bouton retour */
+      .back {
+        display: block;
+        width: fit-content;
+        margin: 20px auto;
+        padding: 12px 30px;
+        background: linear-gradient(135deg, #2563eb, #7c3aed);
+        color: white;
+        text-decoration: none;
+        border-radius: 12px;
+        transition: 0.3s;
+      }
 
-/* Version */
-.version {
-    text-align:center;
-    color:#94a3b8;
-    font-size:14px;
-}
+      .back:hover {
+        transform: scale(1.05);
+      }
 
+      /* 📱 Mobile */
+      @media (max-width: 600px) {
+        body {
+          padding: 10px;
+        }
 
-/* Bouton retour */
-.back {
-    display:block;
-    width:fit-content;
-    margin:20px auto;
-    padding:12px 30px;
-    background:linear-gradient(135deg,#2563eb,#7c3aed);
-    color:white;
-    text-decoration:none;
-    border-radius:12px;
-    transition:.3s;
-}
+        .about-container {
+          margin: 15px auto;
+        }
 
-.back:hover {
-    transform:scale(1.05);
-}
+        .card {
+          padding: 20px;
+          border-radius: 16px;
+          margin-bottom: 18px;
+        }
 
+        h1 {
+          font-size: 24px;
+        }
 
-/* 📱 Mobile */
-@media(max-width:600px){
+        p,
+        li {
+          font-size: 14px;
+        }
 
-    body{
-        padding:10px;
-    }
+        .social-links {
+          flex-direction: column;
+          width: 100%;
+        }
 
-    .about-container{
-        margin:15px auto;
-    }
+        .social-links a {
+          width: 100%;
+          justify-content: center;
+          padding: 14px;
+        }
 
-    .card{
-        padding:20px;
-        border-radius:16px;
-        margin-bottom:18px;
-    }
+        .back {
+          width: 100%;
+          text-align: center;
+        }
+      }
 
+      /* 📱 Très petits écrans */
+      @media (max-width: 350px) {
+        .card {
+          padding: 15px;
+        }
 
-    h1{
-        font-size:24px;
-    }
+        h1 {
+          font-size: 21px;
+        }
 
-
-    p, li{
-        font-size:14px;
-    }
-
-
-    .social-links{
-        flex-direction:column;
-        width:100%;
-    }
-
-
-    .social-links a{
-        width:100%;
-        justify-content:center;
-        padding:14px;
-    }
-
-
-    .back{
-        width:100%;
-        text-align:center;
-    }
-
-}
-
-
-/* 📱 Très petits écrans */
-@media(max-width:350px){
-
-    .card{
-        padding:15px;
-    }
-
-    h1{
-        font-size:21px;
-    }
-
-    p,li{
-        font-size:13px;
-    }
-
-}
+        p,
+        li {
+          font-size: 13px;
+        }
+      }
     </style>
-</head>
+  </head>
 
-<body>
-
-<div class="about-container">
-
-    <div class="card">
+  <body>
+    <div class="about-container">
+      <div class="card">
         <h1>À propos de Bloc-notes</h1>
 
         <p>
-            Bloc-notes est une application simple et moderne
-            conçue pour permettre aux utilisateurs de créer, organiser
-            et conserver leurs notes facilement.
+          Bloc-notes est une application simple et moderne conçue pour permettre
+          aux utilisateurs de créer, organiser et conserver leurs notes
+          facilement.
         </p>
 
         <p>
-            Notre objectif est de proposer une expérience rapide,
-            agréable et accessible à tous.
+          Notre objectif est de proposer une expérience rapide, agréable et
+          accessible à tous.
         </p>
-    </div>
+      </div>
 
-
-    <div class="card">
+      <div class="card">
         <h2>✨ Fonctionnalités</h2>
 
         <ul>
-            <li>Création et modification de notes</li>
-            <li>Organisation des idées importantes</li>
-            <li>Mode clair et mode sombre</li>
-            <li>Interface simple et intuitive</li>
-            <li>Améliorations régulières</li>
+          <li>Création et modification de notes</li>
+          <li>Organisation des idées importantes</li>
+          <li>Mode clair et mode sombre</li>
+          <li>Interface simple et intuitive</li>
+          <li>Améliorations régulières</li>
         </ul>
-    </div>
+      </div>
 
-
-    <div class="card">
+      <div class="card">
         <h2>🎯 Notre mission</h2>
 
         <p>
-            Nous voulons aider chacun à mieux organiser ses pensées,
-            ses projets et ses informations quotidiennes grâce à un
-            outil simple et efficace.
+          Nous voulons aider chacun à mieux organiser ses pensées, ses projets
+          et ses informations quotidiennes grâce à un outil simple et efficace.
         </p>
+      </div>
+
+      <div class="card">
+        <p class="version">Version 1.0.0 • © 2026 Bloc-notes</p>
+      </div>
+
+      <a class="back" href="accueil.html"> Retour </a>
     </div>
 
-
-    <div class="card">
-        <h2>📱 Suivez-nous</h2>
-
-        <div class="social-links">
-
-            <a class="whatsapp" href="https://wa.me/22383641448" target="_blank">
-                <i class="fa-brands fa-whatsapp"></i>
-                WhatsApp
-            </a>
-
-            <a class="Instagram" href="https://instagram.com" target="_blank">
-                <i class="fa-brands fa-instagram"></i>
-                Instagram
-            </a>
-
-            <a class="snapchat" href="https://www.snapchat.com/add/med_14?share_id=OaLQMp_7Kbs&locale=fr-FR" target="_blank">
-                <i class="fa-brands fa-snapchat"></i>
-                Snapchat
-            </a>
-
-        </div>
-    </div>
-
-
-    <div class="card">
-        <p class="version">
-            Version 1.0.0 • © 2026 Bloc-notes
-        </p>
-    </div>
-
-
-    <a class="back" href="accueil.html">
-        Retour
-    </a>
-
-</div>
-
-
-<script src="script.js"></script>
-
-</body>
+    <script src="script.js"></script>
+  </body>
 </html>

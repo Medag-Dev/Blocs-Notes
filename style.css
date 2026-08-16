@@ -9,7 +9,10 @@
   user-select: none;
   -webkit-tap-highlight-color: transparent;
 }
-
+a {
+  text-decoration: none;
+  color: inherit;
+}
 :root {
   --blue: #007aff;
   --blue-dark: #0066d6;
