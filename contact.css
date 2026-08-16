@@ -1,0 +1,158 @@
+
+body{
+  margin:0px;
+  padding: 0px;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  background-color: #fef1df;
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+form{
+  width:70%;
+  height: auto;
+  background-color: white;
+  border-radius: 10px;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+
+}
+
+form .separation{
+  background-color: purple;
+  height: 1px;
+}
+form .gauche{
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.gauche input,select{
+  outline-color: purple;
+  padding-left:30px;
+  border:2px solid gray;
+  border-radius: 5px;
+  width:auto;
+  height: 30px;
+  font-size:18px;
+  font-weight:500;
+  background-color: white;
+}
+.gauche #i1{
+  position: absolute;
+  top:35px;
+  color:purple;
+  width:30px;
+}
+.gauche #i2{
+  position: absolute;
+  top:95px;
+  color:purple;
+  width:30px;
+}
+.gauche #i3{
+  position: absolute;
+  top:155px;
+  color:purple;
+  width:30px;
+}
+.gauche #i4{
+  position: absolute;
+  top:212px;
+  color:purple;
+  width:30px;
+}
+
+
+h1{
+  font-size:20px;
+  text-align: center;
+  font-weight: 700;
+  animation-name: a;
+  animation-duration: 5s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+.droite{
+  display: flex;
+  flex-direction: column;
+  margin-top: 15px;
+}
+.droite textarea{
+  resize: none;
+  outline:none;
+  background-color: rgba(120,120,120,0.4);
+  border:2px solid purple;
+  border-radius: 5px;
+  height: 200px;
+  width:auto;
+  font-size:18px;
+  font-weight:500;
+}
+#button{
+  display: block;
+  margin:15px auto;
+  background-color: rgba(000,000,250,0.7);
+  color:white;
+  border:none;
+  border-radius: 10px;
+  padding:5px;
+  transition: all 0.3s ease;
+  font-weight: bold;
+  cursor: pointer;
+}
+#button:hover{
+  transform: scale(1.05);
+}
+
+/*retour accueil*/
+#retour{
+  font-size: 18px;
+  background: #2453eb;
+  border: none;
+  color: #fff;
+  border-radius: 15px;
+  padding: 5px; 
+  margin-bottom: 3px;
+  margin-right: 3px;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+}
+
+
+@media screen and (min-width:900px){
+  .groupe{
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+  }
+  form{
+    width:30%;
+  }
+  .droite{
+    width:40%;
+    height: auto;
+  }
+  .gauche{
+    width:40%;
+    height: auto;
+  }
+  .droite textarea{
+    height: 200px;
+  }
+}
+@keyframes a{
+  from{color:#ff7092;transform: scale(1.05);
+  }
+  to{color:#fc9a8a;transform: scale(1.1);
+   }
+}

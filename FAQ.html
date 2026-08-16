@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aide & FAQ - BlocNotes</title>
+<link rel="icon" href="logo.png">
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    background: #f5f7fb;
+    color: #222;
+    transition: 0.3s;
+}
+
+header {
+    background: linear-gradient(135deg, #4f46e5, #7c3aed);
+    color: white;
+    padding: 50px 20px;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 38px;
+    margin-bottom: 10px;
+}
+
+header p {
+    opacity: 0.9;
+    font-size: 17px;
+}
+
+#themeToggle {
+    margin-top: 20px;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    background: white;
+    color: #4f46e5;
+    font-weight: bold;
+}
+
+
+.container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+
+.category {
+    background: white;
+    padding: 25px;
+    border-radius: 18px;
+    margin-bottom: 25px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+    transition: 0.3s;
+}
+
+
+.category h2 {
+    color: #4f46e5;
+    margin-bottom: 20px;
+    font-size: 22px;
+}
+
+
+details {
+    border-bottom: 1px solid #eee;
+    padding: 15px 0;
+}
+
+details:last-child {
+    border-bottom: none;
+}
+
+
+summary {
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 16px;
+    list-style: none;
+}
+
+
+summary::before {
+    content: "+";
+    color: #4f46e5;
+    font-size: 22px;
+    margin-right: 10px;
+}
+
+
+details[open] summary::before {
+    content: "−";
+}
+
+
+details p {
+    margin: 15px 0 5px 32px;
+    color: #555;
+    line-height: 1.6;
+}
+
+
+.contact {
+    background: #4f46e5;
+    color: white;
+    text-align: center;
+    padding: 30px;
+    border-radius: 18px;
+    margin-top: 30px;
+}
+
+
+.contact button {
+    margin-top: 15px;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    background: white;
+    color: #4f46e5;
+    font-weight: bold;
+}
+
+
+footer {
+    text-align: center;
+    padding: 25px;
+    color: #777;
+}
+
+
+/* ===== MODE SOMBRE ===== */
+
+body.dark {
+    background: #111827;
+    color: #f9fafb;
+}
+
+
+body.dark .category {
+    background: #1f2937;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+}
+
+
+body.dark .category h2 {
+    color: #a78bfa;
+}
+
+
+body.dark details {
+    border-color: #374151;
+}
+
+
+body.dark summary {
+    color: white;
+}
+
+
+body.dark details p {
+    color: #d1d5db;
+}
+
+
+body.dark footer {
+    color: #9ca3af;
+}
+
+
+body.dark .contact {
+    background: #312e81;
+}
+
+
+body.dark #themeToggle {
+    background: #374151;
+    color: white;
+}
+.video-container {
+    width: 100%;
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 12px;
+    
+    background: linear-gradient(
+        135deg,
+        #ff6b6b,
+        #6c5ce7,
+        #00cec9
+    );
+
+    border-radius: 22px;
+
+    box-shadow:
+        0 15px 40px rgba(108, 92, 231, 0.35),
+        0 8px 20px rgba(0, 206, 201, 0.25);
+
+    overflow: hidden;
+
+    position: relative;
+    animation: glow 4s infinite alternate;
+}
+
+
+.video-pro {
+    width: 100%;
+    height: auto;
+    display: block;
+
+    border-radius: 16px;
+    background: #050505;
+
+    box-shadow:
+        inset 0 0 20px rgba(255,255,255,0.08);
+}
+
+
+/* Effet lumineux animé */
+@keyframes glow {
+    0% {
+        box-shadow:
+        0 15px 40px rgba(255,107,107,0.35);
+    }
+
+    50% {
+        box-shadow:
+        0 15px 45px rgba(108,92,231,0.45);
+    }
+
+    100% {
+        box-shadow:
+        0 15px 40px rgba(0,206,201,0.45);
+    }
+}
+/* ==========================
+   Responsive
+========================== */
+
+/* Tablettes */
+@media (max-width: 768px){
+
+    header{
+        padding:40px 20px;
+    }
+
+    header h1{
+        font-size:30px;
+    }
+
+    header p{
+        font-size:15px;
+    }
+
+    #themeToggle{
+        width:100%;
+        max-width:280px;
+    }
+
+    .container{
+        margin:30px auto;
+        padding:0 15px;
+    }
+
+    .category{
+        padding:20px;
+        border-radius:15px;
+    }
+
+    .category h2{
+        font-size:20px;
+    }
+
+    summary{
+        font-size:15px;
+    }
+
+    details p{
+        margin-left:26px;
+        font-size:14px;
+    }
+
+    .contact{
+        padding:25px 20px;
+    }
+
+    .contact h2{
+        font-size:22px;
+    }
+
+    .contact button{
+        width:100%;
+        max-width:280px;
+    }
+
+    .video-container{
+        margin:30px auto;
+        padding:10px;
+        border-radius:18px;
+    }
+
+    .video-pro{
+        border-radius:14px;
+    }
+
+}
+
+
+/* Téléphones */
+@media (max-width:480px){
+
+    header{
+        padding:30px 15px;
+    }
+
+    header h1{
+        font-size:25px;
+    }
+
+    header p{
+        font-size:14px;
+    }
+
+    .category{
+        padding:18px 15px;
+    }
+
+    .category h2{
+        font-size:18px;
+    }
+
+    summary{
+        font-size:14px;
+        line-height:1.5;
+    }
+
+    summary::before{
+        font-size:20px;
+        margin-right:8px;
+    }
+
+    details p{
+        margin-left:0;
+        margin-top:12px;
+        font-size:13px;
+        line-height:1.7;
+    }
+
+    .contact{
+        padding:20px 15px;
+    }
+
+    .contact h2{
+        font-size:20px;
+    }
+
+    .contact p{
+        font-size:14px;
+    }
+
+    .contact button,
+    #themeToggle{
+        width:100%;
+    }
+
+    footer{
+        font-size:13px;
+        padding:20px 15px;
+    }
+
+}
+</style>
+
+</head>
+
+
+<body>
+
+
+<header>
+
+<h1>📒 Aide & FAQ</h1>
+
+<p>Trouvez rapidement les réponses à vos questions sur BlocNotes</p>
+
+<button id="themeToggle">
+🌙 Mode sombre
+</button>
+
+</header>
+
+
+
+<div class="container">
+
+
+<div class="category">
+
+<h2>🚀 Commencer avec BlocNotes</h2>
+
+
+<details>
+<summary>Comment créer une nouvelle tâche ?</summary>
+<p>
+Appuyez sur le bouton "Ajouter une tâche", écrivez votre tâche puis sauvegardez-la.
+</p>
+</details>
+
+
+<details>
+<summary>Comment créer une note ?</summary>
+<p>
+Rendez-vous dans la section Bloc-notes et cliquez sur "Nouvelle note".
+</p>
+</details>
+
+
+</div>
+
+
+
+
+<div class="category">
+
+<h2>✅ Gestion des tâches</h2>
+
+
+<details>
+<summary>Comment terminer une tâche ?</summary>
+<p>
+Cochez la tâche terminée pour la déplacer dans vos tâches complétées.
+</p>
+</details>
+
+
+<details>
+<summary>Puis-je modifier une tâche ?</summary>
+<p>
+Oui, ouvrez la tâche puis utilisez l'option de modification.
+</p>
+</details>
+
+
+<details>
+<summary>Puis-je ajouter des rappels ?</summary>
+<p>
+Oui, vous pouvez configurer des rappels pour ne pas oublier vos tâches importantes.
+</p>
+</details>
+
+
+</div>
+
+
+
+
+<div class="category">
+
+<h2>📝 Bloc-notes</h2>
+
+
+<details>
+<summary>Mes notes sont-elles sauvegardées ?</summary>
+<p>
+Vos notes sont sauvegardées automatiquement selon vos paramètres de stockage.
+</p>
+</details>
+
+
+<details>
+<summary>Comment supprimer une note ?</summary>
+<p>
+Ouvrez la note puis sélectionnez l'option supprimer.
+</p>
+</details>
+
+
+</div>
+
+
+
+
+<div class="category">
+
+<h2>🔐 Compte et sécurité</h2>
+
+
+<details>
+<summary>Comment protéger mes données ?</summary>
+<p>
+Nous utilisons des mesures de sécurité pour protéger vos informations.
+</p>
+</details>
+
+
+<details>
+<summary>Comment supprimer mon compte ?</summary>
+<p>
+Allez dans les paramètres du compte puis choisissez l'option se déconnecter.
+</p>
+</details>
+
+
+</div>
+
+<div class="video-container">
+    <video class="video-pro" src="faq.mp4" controls poster="logo.png" controlsList="nodownload nofullscreen"></video>
+</div>
+
+
+<div class="contact">
+
+<h2>Vous n'avez pas trouvé votre réponse ?</h2>
+
+<p>Notre équipe est disponible pour vous aider.</p>
+
+<button id="contact">
+Contacter le support
+</button>
+
+</div>
+
+
+</div>
+
+
+
+<footer>
+© 2026 BlocNotes - Tous droits réservés
+</footer>
+
+
+
+<script>
+
+const button = document.getElementById("themeToggle");
+
+
+button.addEventListener("click", () => {
+
+document.body.classList.toggle("dark");
+
+
+if(document.body.classList.contains("dark")){
+
+button.textContent = "☀️ Mode clair";
+
+}else{
+
+button.textContent = "🌙 Mode sombre";
+
+}
+
+});
+document.getElementById("contact").addEventListener("click",()=>{
+  window.location.href="contact.html"
+})
+</script>
+
+
+</body>
+</html>

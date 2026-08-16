@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Notes - Connexion</title>
+
+    <link rel="stylesheet" href="index.css">
+    <link rel="icon" href="logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+
+    <!-- Toastify -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+
+
+    <!-- EmailJS -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+
+
+</head>
+
+
+<body>
+
+
+<div class="background">
+
+    <div class="blur one"></div>
+    <div class="blur two"></div>
+
+</div>
+
+
+
+<div class="container">
+
+
+    <h1>Notes</h1>
+
+    <p>
+        Capturez vos idées. Organisez votre avenir.
+    </p>
+
+
+
+    <form id="form1">
+
+
+        <div class="input-box">
+
+            <input 
+            type="text"
+            placeholder="Nom complet"
+            required
+            id="name">
+
+        </div>
+
+
+
+        <div class="input-box">
+
+            <input 
+            type="email"
+            placeholder="Adresse e-mail"
+            required
+            id="email">
+
+        </div>
+       
+        <div class="checkbox">
+
+            <input 
+            type="checkbox"
+            required>
+            <p>J'ai lu et j'accepte les <a href="politique.html">politiques de confidentialité </a>et les <a href="politique.html">conditions d'utilisation</a> </p>
+
+        </div>
+
+
+
+        <button type="submit" class="btn">
+
+            Continuer
+
+        </button>
+
+
+    </form>
+
+
+</div>
+
+
+
+
+<div class="container2">
+
+
+<form id="form2">
+
+
+    <div class="input-box">
+
+        <input 
+        type="number"
+        placeholder="Code"
+        required
+        id="code">
+
+    </div>
+
+
+
+    <button type="submit" class="btn">
+
+        Vérifier
+
+    </button>
+
+
+</form>
+
+
+</div>
+
+<!-- Toastify -->
+
+<script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+
+
+
+<script>
+
+
+emailjs.init({
+
+    publicKey: "dtci9hmlnAfu3Uqy7"
+
+});
+
+
+
+const form1 = document.getElementById("form1");
+
+const form2 = document.getElementById("form2");
+
+
+const nameInput = document.getElementById("name");
+
+const emailInput = document.getElementById("email");
+
+
+const container = document.querySelector(".container");
+
+const container2 = document.querySelector(".container2");
+
+
+
+let otp = Math.floor(100000 + Math.random() * 900000);
+
+
+
+
+
+form1.addEventListener("submit",(e)=>{
+
+
+    e.preventDefault();
+
+
+
+    emailjs.send(
+
+        "service_d38jidh",
+
+        "template_fzsk5gy",
+
+        {
+
+            otp: otp,
+
+            name: nameInput.value,
+
+            email: emailInput.value
+
+        }
+
+    )
+
+    .then(()=>{
+
+
+        Toastify({
+
+            text:"Vérifiez votre boîte e-mail",
+
+            duration:3500,
+
+            close:true,
+
+            style:{
+
+                background:
+                "linear-gradient(135deg,#2b1055,#7597de)"
+
+            }
+
+        }).showToast();
+
+
+
+        container.style.display="none";
+
+        container2.style.display="flex";
+
+
+
+    })
+
+    .catch(()=>{
+
+
+        Toastify({
+
+            text:"Erreur d'envoi du code",
+
+            duration:3500,
+
+            close:true
+
+        }).showToast();
+
+
+    });
+
+
+
+});
+
+
+
+
+
+
+
+form2.addEventListener("submit",(e)=>{
+
+
+    e.preventDefault();
+
+
+
+    const code = Number(
+        document.getElementById("code").value
+    );
+
+
+
+    if(code === otp){
+
+
+
+        localStorage.setItem(
+            "name",
+            nameInput.value
+        );
+
+
+        localStorage.setItem(
+            "email",
+            emailInput.value
+        );
+
+
+
+        Toastify({
+
+            text:"Vérifié",
+
+            duration:3500,
+
+            close:true,
+
+            style:{
+
+                background:
+                "linear-gradient(135deg,#2b1055,#7597de)"
+
+            }
+
+
+        }).showToast();
+
+
+
+
+        setTimeout(()=>{
+
+
+            window.location.href="captcha.html";
+
+
+        },500);
+
+
+
+    }
+
+
+    else{
+
+
+        Toastify({
+
+            text:"Votre code est invalide",
+
+            duration:3500,
+
+            close:true,
+
+            style:{
+
+                background:
+                "linear-gradient(135deg,#2b1055,#7597de)"
+
+            }
+
+
+        }).showToast();
+
+
+
+    }
+
+
+
+});
+
+
+
+
+
+
+
+window.onload = ()=>{
+
+
+    const token1 = localStorage.getItem("name");
+
+    const token2 = localStorage.getItem("email");
+
+
+
+    container2.style.display="none";
+
+
+
+    if(token1 && token2){
+
+
+
+        container.style.display="none";
+
+            window.location.href="accueil.html";
+    }
+
+
+    else{
+
+
+        container.style.display="flex";
+
+
+    }
+
+
+
+};
+
+</script>
+
+</body>
+
+</html>

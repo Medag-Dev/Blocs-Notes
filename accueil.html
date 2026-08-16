@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+
+<title>Blocs notes</title>
+
+<link rel="icon" href="logo.png">
+<link rel="stylesheet" href="style.css">
+
+
+
+<!-- Font Awesome -->
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+
+
+
+<!-- Toast -->
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+
+
+
+<!-- Quill -->
+
+<link href="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css" rel="stylesheet">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+
+
+
+</head>
+
+
+
+<body>
+
+
+<div class="header">
+
+<h1>Notes</h1>
+
+<i class="fa-solid fa-bars-staggered"></i>
+
+</div>
+
+
+
+
+
+<div class="notes">
+
+
+<div id="toolbar-container" class="toolbar-container">
+
+
+<span class="ql-formats">
+
+<select class="ql-font"></select>
+
+<select class="ql-size"></select>
+
+</span>
+
+
+
+<span class="ql-formats">
+
+<button class="ql-bold"></button>
+
+<button class="ql-italic"></button>
+
+<button class="ql-underline"></button>
+
+<button class="ql-strike"></button>
+
+</span>
+
+
+
+
+<span class="ql-formats">
+
+<select class="ql-color"></select>
+
+<select class="ql-background"></select>
+
+</span>
+
+
+
+
+<span class="ql-formats">
+
+<button class="ql-script" value="sub"></button>
+
+<button class="ql-script" value="super"></button>
+
+</span>
+
+
+
+
+<span class="ql-formats">
+
+<button class="ql-header" value="1"></button>
+
+<button class="ql-header" value="2"></button>
+
+<button class="ql-blockquote"></button>
+
+<button class="ql-code-block"></button>
+
+</span>
+
+
+
+
+<span class="ql-formats">
+
+<button class="ql-list" value="ordered"></button>
+
+<button class="ql-list" value="bullet"></button>
+
+<button class="ql-indent" value="-1"></button>
+
+<button class="ql-indent" value="+1"></button>
+
+</span>
+
+
+
+
+<span class="ql-formats">
+
+<button class="ql-direction" value="rtl"></button>
+
+<select class="ql-align"></select>
+
+</span>
+
+
+
+
+<span class="ql-formats">
+
+<button class="ql-link"></button>
+
+<button class="ql-image"></button>
+
+<button class="ql-video"></button>
+
+<button class="ql-formula"></button>
+
+</span>
+
+
+
+
+<span class="ql-formats">
+
+<button class="ql-clean"></button>
+
+</span>
+
+
+
+<div class="save">
+
+Enregistrer
+
+<i class="fa-solid fa-floppy-disk"></i>
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+<div id="editor" class="editor"></div>
+
+
+
+<i class="fa-regular fa-pen-to-square"></i>
+
+
+
+<ul class="ul1">
+
+</ul>
+
+
+
+</div>
+<!-- TACHES -->
+
+<div class="taches">
+
+
+<div class="todo-input">
+
+<input 
+type="text" 
+placeholder="Ajouter une tâche..." 
+id="input">
+
+
+<i class="fa-solid fa-circle-plus"></i>
+
+
+</div>
+
+
+
+<div class="select">
+
+
+<select name="filter" id="filter">
+
+
+<option value="Toutes">
+Toutes
+</option>
+
+
+<option value="Faites">
+Faites
+</option>
+
+
+<option value="À Faire">
+À Faire
+</option>
+
+
+</select>
+
+
+</div>
+
+
+
+
+<ul class="ul2">
+
+</ul>
+
+
+
+</div>
+
+
+
+
+
+
+<!-- MENU -->
+
+
+<div class="menu">
+
+
+<a href="#" id="profil">
+
+
+<i class="fa-solid fa-user"></i>
+
+Profil
+
+
+</a>
+
+
+
+
+
+<a class="Theme">
+
+
+<i class="fa-solid fa-gear"></i>
+
+
+<p class="claire">
+Claire
+</p>
+
+
+<i class="fa-solid fa-toggle-off"></i>
+
+
+</a>
+
+
+<a href="propos.html">
+
+
+<i class="fa-solid fa-circle-info"></i>
+
+
+À propos
+
+
+</a>
+
+
+<a href="contact.html">
+
+
+<i class="fa-solid fa-mobile-button"></i>
+
+
+Contact
+
+
+</a>
+
+
+
+
+
+<a href="politique.html">
+
+
+<i class="fa-solid fa-eye"></i>
+
+
+Politique
+
+
+</a>
+
+<a href="FAQ.html">
+
+
+<i class="fa-solid fa-question"></i>
+
+
+Aide & FAQ
+
+
+</a>
+
+</div>
+
+
+
+
+
+
+<!-- FOOTER -->
+
+
+<div class="footer">
+
+
+<div class="n">
+
+
+<i class="fa-solid fa-file-pen"></i>
+
+
+<p>
+Notes
+</p>
+
+
+</div>
+
+
+
+
+<div class="t">
+
+
+<i class="fa-solid fa-list-check"></i>
+
+
+<p>
+Tâches
+</p>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+<!-- QUILL -->
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
+
+
+
+
+<script>
+
+
+const quill = new Quill('#editor', {
+
+
+    modules: {
+
+        syntax: true,
+
+        toolbar: '#toolbar-container'
+
+    },
+
+
+    placeholder: 'Note ici...',
+
+
+    theme: 'snow',
+
+
+});
+
+
+
+</script>
+
+
+
+
+
+
+<!-- PROFIL -->
+
+
+<div class="profil-modal">
+
+
+<div class="profil-container">
+
+
+<i class="fa-solid fa-xmark close-profil"></i>
+
+<img src="Av_1.png" class="femme">
+<img src="Av_2.png" class="homme">
+
+
+
+
+<h2>
+Profil 
+</h2>
+
+
+
+<p id="profilNom"></p>
+
+
+<p id="profilEmail"></p>
+
+
+<strong class="profil-label">Sexe</strong>
+<!-- Homme-->
+<i class="fa-solid fa-mars"></i>
+
+<!-- Femme
+<i class="fa-solid fa-venus"></i> -->
+
+<select name="sexe" id="sexe">sexe
+<option>Homme</option>
+<option>Femme</option>
+</select>
+
+
+<button id="deconnexion">
+
+Déconnexion<i class="fa-solid fa-arrow-right-from-bracket"></i>
+
+</button>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+<!-- TOASTIFY -->
+
+
+<script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+
+
+
+
+<!-- SCRIPT PRINCIPAL -->
+
+
+<script src="script.js"></script>
+
+
+
+</body>
+
+</html>

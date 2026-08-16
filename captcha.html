@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Captcha</title>
+<link rel="icon" href="logo.png">
+<style>
+
+*{
+  box-sizing:border-box;
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+body{
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:
+  radial-gradient(circle at top,#1e293b,#020617 60%);
+  padding:20px;
+  color:white;
+}
+
+
+.container{
+
+  max-width:850px;
+  width:100%;
+  background:rgba(15,23,42,0.85);
+  backdrop-filter:blur(15px);
+
+  border:1px solid rgba(255,255,255,0.1);
+
+  border-radius:25px;
+  padding:45px;
+
+  display:flex;
+  gap:50px;
+  align-items:center;
+
+  box-shadow:
+  0 20px 60px rgba(0,0,0,0.5);
+
+}
+
+
+.text{
+  flex:1;
+}
+
+
+.text h1{
+
+  font-size:35px;
+  margin-bottom:15px;
+
+  background:linear-gradient(90deg,#38bdf8,#818cf8);
+  -webkit-background-clip:text;
+  color:transparent;
+
+}
+
+
+.text p{
+
+  color:#94a3b8;
+  line-height:1.7;
+  font-size:16px;
+
+}
+
+
+
+.code{
+
+  margin-top:25px;
+
+  background:#020617;
+
+  border:1px solid #1e293b;
+
+  padding:18px;
+
+  border-radius:15px;
+
+  font-family:monospace;
+
+  color:#22c55e;
+
+  font-size:14px;
+
+}
+
+
+
+.captcha{
+
+  flex:1;
+
+  display:flex;
+  justify-content:center;
+
+}
+
+
+
+@media(max-width:750px){
+
+.container{
+
+ flex-direction:column;
+ padding:30px;
+ text-align:center;
+
+}
+
+.text h1{
+ font-size:28px;
+}
+
+}
+
+
+</style>
+
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+<div class="text">
+
+<h1>
+🔒 Vérification de sécurité
+</h1>
+
+
+<p>
+Avant d'accéder à l'application, veuillez confirmer
+que vous êtes une vraie personne. Cette protection
+permet de bloquer les robots et sécuriser votre compte.
+</p>
+
+
+<div class="code">
+
+// Validation Captcha<br><br>
+
+function valide(token){<br>
+
+&nbsp;&nbsp;window.location.href = "accueil.html";<br>
+
+}
+
+
+</div>
+
+
+</div>
+
+
+
+<div class="captcha">
+
+<form>
+
+<div class="h-captcha"
+     data-sitekey="342c21b8-2a3e-4224-8a18-95d0afc68354"
+     data-callback="valide"
+     data-theme="dark">
+</div>
+
+</form>
+
+</div>
+
+
+<script>
+function valide(token){
+    window.location.href = "accueil.html";
+}
+</script>
+
+
+<script src="https://js.hcaptcha.com/1/api.js" async defer></script>
+</body>
+
+</html>
